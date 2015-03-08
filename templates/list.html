@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Test of select box</title>
+    <script type="text/javascript">
+      function addOpt(e) {
+        var o=document.createElement("option");
+        //o.value= -e.options.length;
+        o.text = "Test " + e.options.length;
+        o.selected=true;
+        e.add(o,null);
+      }
+    </script>
+  </head>
+  <body>
+  <h2> Select Target Variable</h2>
+    <form method="post" action="listaction">
+      <!--<input type="button" onclick="addOpt(this.form.myselect)" value="Add option"/>-->
+      <br/>
+      <select id="targetvariable" name="targetvariable" multiple="multiple" size="10">
+          {% for vitem in vlist %}
+          <option value="{{vitem}}">{{vitem}}</option>
+          {% endfor %}
+      </select>
+      <br/><br/>
+        <label>Select Variable to Remove</label><br />
+      <select id="excludevariable" name="excludevariable" multiple="multiple" size="10">
+          {% for vitem in vlist %}
+          <option value="{{vitem}}">{{vitem}}</option>
+          {% endfor %}
+      </select><br/><br/>
+      <input type="submit"/>
+    </form>
+  </body>
+</html>
